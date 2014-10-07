@@ -1,0 +1,7 @@
+build
+src/facette.egg-info
+*.pyc
+*.pyo
+*~
+doc/build
+dist
