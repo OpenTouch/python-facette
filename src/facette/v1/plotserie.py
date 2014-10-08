@@ -14,12 +14,12 @@
 #    under the License.
 
 from facette.utils import *
-from facette.v1.plotserieinfo import PlotSerieInfo
+from facette.v1.plotseriesummary import PlotSerieSummary
 import json
 
 PLOT_SERIE_NAME     = "name"
 PLOT_SERIE_STACK_ID = "stack_id"
-PLOT_SERIE_INFO     = "info"
+PLOT_SERIE_SUMMARY     = "summary"
 PLOT_SERIE_PLOTS    = "plots"
 
 class PlotSerie:
@@ -29,15 +29,15 @@ class PlotSerie:
         self.stack_id = facette_to_json(PLOT_SERIE_STACK_ID, js, self.serie)
         self.plots    = facette_to_json(PLOT_SERIE_PLOTS,    js, self.serie)
 
-        self.info = {}
-        if PLOT_SERIE_INFO in js:
-            self.info = PlotSerieInfo(js[PLOT_SERIE_INFO])
-        self.serie[PLOT_SERIE_INFO] = self.info
+        self.summary = {}
+        if PLOT_SERIE_SUMMARY in js:
+            self.summary = PlotSerieSummary(js[PLOT_SERIE_SUMMARY])
+        self.serie[PLOT_SERIE_SUMMARY] = self.summary
 
     def __str__(self):
         js = self.serie
-        info = json.loads(str(self.info))
-        js[PLOT_SERIE_INFO] = info
+        summary = json.loads(str(self.summary))
+        js[PLOT_SERIE_SUMMARY] = summary
         return json.dumps(js)
 
     def __repr__(self):
