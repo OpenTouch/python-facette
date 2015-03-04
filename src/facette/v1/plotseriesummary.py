@@ -16,21 +16,21 @@
 from facette.utils import *
 import json
 
-PLOT_INFO_MIN   = "min"
-PLOT_INFO_MAX   = "max"
-PLOT_INFO_LAST  = "last"
-PLOT_INFO_AVG   = "avg"
+PLOT_SUMMARY_MIN   = "min"
+PLOT_SUMMARY_MAX   = "max"
+PLOT_SUMMARY_LAST  = "last"
+PLOT_SUMMARY_AVG   = "avg"
 
-class PlotSerieInfo:
+class PlotSerieSummary:
     def __init__(self, js=""):
-        self.info = {}
-        self.min    = facette_to_json(PLOT_INFO_MIN,  js, self.info)
-        self.max    = facette_to_json(PLOT_INFO_MAX,  js, self.info)
-        self.last   = facette_to_json(PLOT_INFO_LAST, js, self.info)
-        self.avg    = facette_to_json(PLOT_INFO_AVG,  js, self.info)
+        self.summary = {}
+        self.min    = facette_to_json(PLOT_SUMMARY_MIN,  js, self.summary)
+        self.max    = facette_to_json(PLOT_SUMMARY_MAX,  js, self.summary)
+        self.last   = facette_to_json(PLOT_SUMMARY_LAST, js, self.summary)
+        self.avg    = facette_to_json(PLOT_SUMMARY_AVG,  js, self.summary)
 
     def __str__(self):
-        return json.dumps(self.info)
+        return json.dumps(self.summary)
 
     def __repr__(self):
         return str(self)
