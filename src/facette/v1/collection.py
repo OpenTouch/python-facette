@@ -50,6 +50,7 @@ class Collection:
 
     def set(self, id=None, name=None, description=None, parent=None,
             has_children=None, entries=None):
+
         self.id           = facette_set(id, COLLECTION_ID, self.collection)
         self.name         = facette_set(name, COLLECTION_NAME, self.collection)
         self.description  = facette_set(description,
@@ -57,6 +58,7 @@ class Collection:
         self.parent       = facette_set(parent, COLLECTION_PARENT, self.collection)
         self.has_children = facette_set(has_children,
                                         COLLECTION_HAS_CHILDREN, self.collection)
+
         if entries:
             for x in entries:
                 self.entries.append(x)

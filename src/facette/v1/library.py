@@ -35,7 +35,6 @@ class Library:
 
     def list(self):
         code, js = self.c.get("/api/v1/library/")
-        print js
         return ""
         # o = None
         # if code == 200:

@@ -21,6 +21,7 @@ OPTIONS_SAMPLE      = "sample"
 OPTIONS_RANGE       = "range"
 OPTIONS_PERCENTILES = "percentiles"
 OPTIONS_CONSTANTS   = "constants"
+OPTIONS_ENABLED     = "enabled"
 
 class Options:
     def __init__(self, js=""):
@@ -30,14 +31,16 @@ class Options:
         self.range       = facette_to_json(OPTIONS_RANGE,       js, self.options)
         self.percentiles = facette_to_json(OPTIONS_PERCENTILES, js, self.options)
         self.constants   = facette_to_json(OPTIONS_CONSTANTS,   js, self.options)
+        self.enabled     = facette_to_json(OPTIONS_ENABLED,     js, self.options)
 
     def set(self, title=None, sample=None, range=None,
-               percentiles=None, constants=None):
+               percentiles=None, constants=None, enabled=None):
         self.title       = facette_set(title,       OPTIONS_TITLE,       self.options)
         self.sample      = facette_set(sample,      OPTIONS_SAMPLE,      self.options)
         self.range       = facette_set(range,       OPTIONS_RANGE,       self.options)
         self.percentiles = facette_set(percentiles, OPTIONS_PERCENTILES, self.options)
         self.constants   = facette_set(constants,   OPTIONS_CONSTANTS,   self.options)
+        self.enabled     = facette_set(enabled,     OPTIONS_ENABLED,     self.options)
 
     def __str__(self):
         return json.dumps(self.options)

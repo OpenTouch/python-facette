@@ -6,6 +6,7 @@ GRAPH_GROUP_NAME     = "name"
 GRAPH_GROUP_TYPE     = "type"
 GRAPH_GROUP_STACK_ID = "stack_id"
 GRAPH_GROUP_SERIES   = "series"
+GRAPH_GROUP_SCALE    = "scale"
 
 class GraphGroup:
     def __init__(self, js=""):
@@ -21,13 +22,16 @@ class GraphGroup:
                 self.series.append(e)
         self.group[GRAPH_GROUP_SERIES] = self.series
 
-    def set(self, name=None, type=None, stack_id=None, series=None):
+        self.scale    = facette_to_json(GRAPH_GROUP_SCALE,    js, self.group)
+
+    def set(self, name=None, type=None, stack_id=None, series=None, scale=None):
         self.name      = facette_set(name,     GRAPH_GROUP_NAME,     self.group)
         self.type      = facette_set(type,     GRAPH_GROUP_TYPE,     self.group)
         self.stack_id  = facette_set(stack_id, GRAPH_GROUP_STACK_ID, self.group)
         if series:
             for x in series:
                 self.series.append(x)
+        self.scale     = facette_set(scale,    GRAPH_GROUP_SCALE,    self.group)
 
     def __str__(self):
         js = self.group

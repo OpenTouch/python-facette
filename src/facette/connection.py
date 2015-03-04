@@ -35,19 +35,18 @@ class Connection:
         if user and passwd:
             self.auth = (user, passwd)
         self.headers = { 'content-type': CONTENT_TYPE_JSON }
-    
+
     def get(self, uri, payload=None):
         r = requests.get(self.root + uri, auth=self.auth, params=payload)
-        if HEADER_X_TOTAL_RECORDS in r.headers:
-            print r.headers[HEADER_X_TOTAL_RECORDS]
+        #if HEADER_X_TOTAL_RECORDS in r.headers:
+        #    print r.headers[HEADER_X_TOTAL_RECORDS]
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
             return r.status_code, r.json()
         else:
             return r.status_code, r.text
 
     def post(self, uri, payload):
-        print self.root + uri
-        r = requests.post(self.root + uri, data=json.dumps(payload),
+        r = requests.post(self.root + uri, data=payload,
                           auth=self.auth, headers=self.headers)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
             return r.status_code, r.json()
@@ -55,8 +54,7 @@ class Connection:
             return r.status_code, r.text
 
     def put(self, uri, payload):
-        print self.root + uri
-        r = requests.delete(self.root + uri, data=json.dumps(payload),
+        r = requests.delete(self.root + uri, data=payload,
                           auth=self.auth, headers=self.headers)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
             return r.status_code, r.json()
@@ -64,7 +62,6 @@ class Connection:
             return r.status_code, r.text
 
     def delete(self, uri):
-        print self.root + uri
         r = requests.delete(self.root + uri, auth=self.auth)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
             return r.status_code, r.json()

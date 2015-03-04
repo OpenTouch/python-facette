@@ -31,7 +31,6 @@ class Catalog:
 
     def list(self):
         code, js = self.c.get("/api/v1/catalog/")
-        print js
         return ""
         # o = None
         # if code == 200:

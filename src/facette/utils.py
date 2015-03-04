@@ -23,11 +23,8 @@ def facette_to_json(name, js, d):
     return v
 
 def facette_set(v, f, d):
-    sv = ""
-    if v:
-        sv = ""
-        d[f] = v
-    return sv
+    if v is not None: d[f] = v
+    return v
 
 def payload_add(payload, name, v):
     if v:
