@@ -24,7 +24,7 @@ pkgdir = {'': 'src'}
 
 setup(
     name = 'facette',
-    version = '1.0.1',
+    version = '1.2',
     description = 'Facette SDK for Python',
     keywords = 'facette REST API SDK',
     long_description = long_description,
