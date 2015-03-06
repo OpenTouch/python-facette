@@ -41,7 +41,7 @@ class Connection:
         #if HEADER_X_TOTAL_RECORDS in r.headers:
         #    print r.headers[HEADER_X_TOTAL_RECORDS]
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
-            return r.status_code, r.json()
+            return r.status_code, r.json
         else:
             return r.status_code, r.text
 
@@ -49,7 +49,7 @@ class Connection:
         r = requests.post(self.root + uri, data=payload,
                           auth=self.auth, headers=self.headers)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
-            return r.status_code, r.json()
+            return r.status_code, r.json
         else:
             return r.status_code, r.text
 
@@ -57,13 +57,13 @@ class Connection:
         r = requests.delete(self.root + uri, data=payload,
                           auth=self.auth, headers=self.headers)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
-            return r.status_code, r.json()
+            return r.status_code, r.json
         else:
             return r.status_code, r.text
 
     def delete(self, uri):
         r = requests.delete(self.root + uri, auth=self.auth)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
-            return r.status_code, r.json()
+            return r.status_code, r.json
         else:
             return r.status_code, r.text
