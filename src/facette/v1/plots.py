@@ -27,7 +27,7 @@ class Plots:
         payload = {}
         payload_add(payload, 'id', name)
         payload_add(payload, 'range',  range)
-        code, js = self.c.post(self.root, payload)
+        code, js = self.c.post(self.root, json.dumps(payload))
         g = None
         if code == RESULT_OK:
             g = Plot(js)
