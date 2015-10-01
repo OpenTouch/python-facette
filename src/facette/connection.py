@@ -54,7 +54,7 @@ class Connection:
             return r.status_code, r.text
 
     def put(self, uri, payload):
-        r = requests.delete(self.root + uri, data=payload,
+        r = requests.put(self.root + uri, data=payload,
                           auth=self.auth, headers=self.headers)
         if r.headers['content-type'].startswith(CONTENT_TYPE_JSON):
             return r.status_code, r.json()
