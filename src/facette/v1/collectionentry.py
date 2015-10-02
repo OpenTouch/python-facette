@@ -25,7 +25,7 @@ class CollectionEntry:
         self.entry = {}
         self.id = facette_to_json(COLLECTION_ENTRY_ID, js, self.entry)
         self.options = None
-        if COLLECTION_ENTRY_OPTIONS in js:
+        if COLLECTION_ENTRY_OPTIONS in js and js[COLLECTION_ENTRY_OPTIONS] is not None:
             self.options = Options(js[COLLECTION_ENTRY_OPTIONS])
 
     def set(self, id=None, options=None):
