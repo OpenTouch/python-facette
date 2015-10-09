@@ -60,6 +60,7 @@ class Collection:
                                         COLLECTION_HAS_CHILDREN, self.collection)
 
         if entries:
+            self.entries = []
             for x in entries:
                 self.entries.append(x)
 
